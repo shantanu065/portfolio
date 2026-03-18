@@ -67,7 +67,7 @@ const Hero = () => {
                 Download CV
               </a>
               <a href="#projects" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.1rem' }}>
-                View Research <ArrowRight size={18} style={{ verticalAlign: 'middle', marginLeft: '0.3rem' }} />
+                View Projects<ArrowRight size={18} style={{ verticalAlign: 'middle', marginLeft: '0.3rem' }} />
               </a>
             </div>
           </motion.div>
