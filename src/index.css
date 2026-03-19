@@ -38,13 +38,18 @@ a {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #00c9a7, #00b4d8);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -80,18 +85,19 @@ h1, h2, h3, h4, h5, h6 {
 .glass-panel::before {
   content: '';
   position: absolute;
-  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
   border-radius: inherit;
   padding: 2px;
-  background: conic-gradient(
-    from 0deg,
-    var(--accent-cyan) 0deg,
-    var(--accent-purple) var(--draw-angle),
-    transparent var(--draw-angle),
-    transparent calc(360deg - var(--draw-angle)),
-    var(--accent-purple) calc(360deg - var(--draw-angle)),
-    var(--accent-cyan) 360deg
-  );
+  background: conic-gradient(from 0deg,
+      var(--accent-cyan) 0deg,
+      var(--accent-purple) var(--draw-angle),
+      transparent var(--draw-angle),
+      transparent calc(360deg - var(--draw-angle)),
+      var(--accent-purple) calc(360deg - var(--draw-angle)),
+      var(--accent-cyan) 360deg);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -194,6 +200,7 @@ section {
   display: inline-block;
   text-decoration: none;
 }
+
 .hover-underline::after {
   content: '';
   position: absolute;
@@ -207,6 +214,7 @@ section {
   transition: transform 0.3s ease-out;
   border-radius: 2px;
 }
+
 .hover-underline:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
@@ -216,13 +224,16 @@ section {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-color);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--card-border);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
 }
