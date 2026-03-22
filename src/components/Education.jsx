@@ -45,7 +45,7 @@ const Education = () => {
             <motion.div 
               initial={{ height: 0 }}
               whileInView={{ height: '100%' }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
               style={{ width: '100%', background: 'linear-gradient(180deg, var(--accent-cyan), var(--accent-purple))' }}
             />
@@ -56,7 +56,7 @@ const Education = () => {
               key={index}
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
               className="glass-panel"
               style={{ position: 'relative', marginBottom: '2rem', padding: '1.5rem', marginLeft: '2rem' }}
