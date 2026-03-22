@@ -11,6 +11,7 @@ const Hero = () => {
         Slightly inset from top, bottom, and right side with rounded corners to make it float perfectly!
       */}
       <motion.div
+        className="hero-video-panel"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
@@ -51,6 +52,7 @@ const Hero = () => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '2rem' }}>
 
           <motion.div
+            className="hero-text-wrapper"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}

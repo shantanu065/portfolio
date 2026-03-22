@@ -63,7 +63,7 @@ const About = () => {
               <h3 style={{ fontSize: '1.6rem', borderBottom: '2px solid var(--card-border)', paddingBottom: '0.5rem', display: 'inline-block' }}>Technical Skills & Tools</h3>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
               {skills.map((skill, index) => (
                 <motion.div 
                   key={index} 

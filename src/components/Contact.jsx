@@ -20,10 +20,10 @@ const Contact = () => {
           </p>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', marginBottom: '4rem' }}>
-            <a href="mailto:shantanukumar065@gmail.com" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.2rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <a href="mailto:shantanukumar065@gmail.com" className="hover-underline contact-link" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.2rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               <Mail size={20} /> shantanukumar065@gmail.com
             </a>
-            <a href="tel:+918797063557" className="hover-underline" style={{ color: 'var(--accent-purple)', fontWeight: 600, fontSize: '1.2rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <a href="tel:+918797063557" className="hover-underline contact-link" style={{ color: 'var(--accent-purple)', fontWeight: 600, fontSize: '1.2rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
               <Phone size={20} /> +91-8797063557
             </a>
           </div>

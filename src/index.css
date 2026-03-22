@@ -237,3 +237,93 @@ section {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
 }
+
+/* ===== RESPONSIVE: Tablet (≤768px) ===== */
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .glass-panel {
+    padding: 1.5rem;
+  }
+
+  /* Hide desktop nav links, show hamburger */
+  .nav-links {
+    display: none !important;
+  }
+
+  .nav-hamburger {
+    display: flex !important;
+  }
+
+  /* Hero video panel */
+  .hero-video-panel {
+    display: none !important;
+  }
+
+  .hero-text-wrapper {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Education timeline */
+  .education-timeline {
+    padding-left: 20px !important;
+  }
+
+  .education-timeline .timeline-dot {
+    left: -41px !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .education-card {
+    margin-left: 1.2rem !important;
+  }
+
+  /* Publications */
+  .pub-card {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+}
+
+/* ===== RESPONSIVE: Mobile (≤480px) ===== */
+@media (max-width: 480px) {
+  section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .glass-panel {
+    padding: 1.2rem;
+  }
+
+  /* Nav subtitle */
+  .nav-subtitle {
+    display: none !important;
+  }
+
+  /* Contact */
+  .contact-link {
+    font-size: 1rem !important;
+  }
+}

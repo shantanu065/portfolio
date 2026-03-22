@@ -39,7 +39,7 @@ const Education = () => {
       <div className="container">
         <h2 className="section-title">Experience & Education</h2>
         
-        <div style={{ position: 'relative', maxWidth: '800px', margin: '0 auto', paddingLeft: '30px' }}>
+        <div className="education-timeline" style={{ position: 'relative', maxWidth: '800px', margin: '0 auto', paddingLeft: '30px' }}>
           {/* Timeline Line */}
           <div style={{ position: 'absolute', left: '0', top: '0', bottom: '0', width: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '2px' }}>
             <motion.div 
@@ -58,11 +58,11 @@ const Education = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.3 + index * 0.2 }}
-              className="glass-panel"
+              className="glass-panel education-card"
               style={{ position: 'relative', marginBottom: '2rem', padding: '1.5rem', marginLeft: '2rem' }}
             >
               {/* Timeline dot */}
-              <div style={{ position: 'absolute', left: '-51px', top: '24px', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--bg-color)', border: '4px solid var(--accent-cyan)', zIndex: 2, boxShadow: '0 0 10px var(--accent-cyan)' }} />
+              <div className="timeline-dot" style={{ position: 'absolute', left: '-51px', top: '24px', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--bg-color)', border: '4px solid var(--accent-cyan)', zIndex: 2, boxShadow: '0 0 10px var(--accent-cyan)' }} />
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '0.5rem', color: 'var(--accent-cyan)' }}>
                 {item.icon}
