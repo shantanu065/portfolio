@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -67,6 +67,90 @@ const Projects = () => {
     }
   ];
 
+  const handleMouseMove = (e, cardRef) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    const rotateY = ((x - centerX) / centerX) * 5;
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+  };
+
+  const handleMouseLeave = (cardRef) => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+  };
+
+  const ProjectCard = ({ project, index }) => {
+    const cardRef = useRef(null);
+    
+    return (
+      <motion.div 
+        ref={cardRef}
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="glass-panel"
+        onMouseMove={(e) => handleMouseMove(e, cardRef)}
+        onMouseLeave={() => handleMouseLeave(cardRef)}
+        style={{ 
+          display: 'flex', flexDirection: 'column', height: '100%', position: 'relative', overflow: 'hidden',
+          transition: 'transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease',
+          willChange: 'transform'
+        }}
+      >
+        <div style={{ position: 'absolute', top: 0, right: 0, width: '150px', height: '150px', background: project.color, filter: 'blur(80px)', opacity: 0.2, zIndex: -1 }} />
+        
+        {project.image && (
+          <div style={{ width: '100%', height: '180px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <img src={project.image} alt={project.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+        )}
+        
+        {project.comingSoon && (
+          <div style={{ position: 'absolute', top: '1rem', right: '1rem', padding: '0.4rem 1rem', background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: '#fff', zIndex: 2 }}>
+            🚧 Coming Soon
+          </div>
+        )}
+        
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem', opacity: project.comingSoon ? 0.6 : 1 }}>{project.title}</h3>
+        <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', flexGrow: 1, opacity: project.comingSoon ? 0.5 : 1 }}>{project.description}</p>
+        
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+          {project.tags.map(tag => (
+            <span key={tag} style={{ fontSize: '0.8rem', padding: '0.3rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', color: project.color, border: `1px solid rgba(255,255,255,0.1)` }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+        
+        <div style={{ display: 'flex', gap: '1.5rem', marginTop: 'auto' }}>
+          {project.links ? (
+            project.links.map((link, i) => (
+              <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="hover-underline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
+                <ExternalLink size={18} /> {link.label}
+              </a>
+            ))
+          ) : (
+            <>
+              <a href="#" className="hover-underline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
+                <Github size={18} /> Code
+              </a>
+              <a href="#" className="hover-underline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
+                <ExternalLink size={18} /> Demo
+              </a>
+            </>
+          )}
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
     <section id="projects">
       <div className="container">
@@ -74,59 +158,7 @@ const Projects = () => {
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
           {projects.map((project, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-panel"
-              style={{ display: 'flex', flexDirection: 'column', height: '100%', position: 'relative', overflow: 'hidden' }}
-            >
-              <div style={{ position: 'absolute', top: 0, right: 0, width: '150px', height: '150px', background: project.color, filter: 'blur(80px)', opacity: 0.2, zIndex: -1 }} />
-              
-              {project.image && (
-                <div style={{ width: '100%', height: '180px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-                  <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-              )}
-              
-              {project.comingSoon && (
-                <div style={{ position: 'absolute', top: '1rem', right: '1rem', padding: '0.4rem 1rem', background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: '#fff', zIndex: 2 }}>
-                  🚧 Coming Soon
-                </div>
-              )}
-              
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem', opacity: project.comingSoon ? 0.6 : 1 }}>{project.title}</h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', flexGrow: 1, opacity: project.comingSoon ? 0.5 : 1 }}>{project.description}</p>
-              
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
-                {project.tags.map(tag => (
-                  <span key={tag} style={{ fontSize: '0.8rem', padding: '0.3rem 0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', color: project.color, border: `1px solid rgba(255,255,255,0.1)` }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              
-              <div style={{ display: 'flex', gap: '1.5rem', marginTop: 'auto' }}>
-                {project.links ? (
-                  project.links.map((link, i) => (
-                    <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="hover-underline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
-                      <ExternalLink size={18} /> {link.label}
-                    </a>
-                  ))
-                ) : (
-                  <>
-                    <a href="#" className="hover-underline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
-                      <Github size={18} /> Code
-                    </a>
-                    <a href="#" className="hover-underline" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem' }}>
-                      <ExternalLink size={18} /> Demo
-                    </a>
-                  </>
-                )}
-              </div>
-            </motion.div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
       </div>

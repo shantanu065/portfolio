@@ -1,20 +1,99 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 
 const BackgroundAnimation = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animationId;
+    let particles = [];
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Create particles
+    const PARTICLE_COUNT = 60;
+    const CONNECTION_DIST = 150;
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 2 + 1,
+        color: Math.random() > 0.5 ? 'rgba(6, 182, 212, 0.6)' : 'rgba(139, 92, 246, 0.5)'
+      });
+    }
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw particles
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce off walls
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      });
+
+      // Draw connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < CONNECTION_DIST) {
+            const opacity = (1 - dist / CONNECTION_DIST) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(6, 182, 212, ${opacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, overflow: 'hidden' }}>
-      <div className="bg-blob bg-blob-1" />
-      <div className="bg-blob bg-blob-2" />
-      <svg width="100%" height="100%" style={{ position: 'absolute', opacity: 0.1 }}>
-         <defs>
-          <pattern id="hexagons" width="40" height="69.282" patternUnits="userSpaceOnUse" patternTransform="scale(1.5)">
-            <path d="M 40 0 L 20 11.547 L 0 0 L 0 23.094 L 20 34.641 L 40 23.094 Z M 0 34.641 L 20 46.188 L 0 57.735 L 0 80.829 L 20 92.376 L 40 80.829 L 40 57.735 L 20 46.188 Z" fill="none" stroke="var(--accent-cyan)" strokeWidth="0.5" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hexagons)" />
-      </svg>
-    </div>
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
+        pointerEvents: 'none'
+      }}
+    />
   );
 };
 

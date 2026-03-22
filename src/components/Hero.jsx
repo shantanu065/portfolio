@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Dna, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
+  const name = "Shantanu Kumar";
+  const [displayedText, setDisplayedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < name.length) {
+        setDisplayedText(name.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Blinking cursor
+  useEffect(() => {
+    const blink = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 530);
+    return () => clearInterval(blink);
+  }, []);
+
   return (
     <section id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '120px', paddingBottom: '40px', position: 'relative', overflow: 'hidden' }}>
 
-      {/* 
-        The massive right-side section bridging dark theme into the pure white simulation space.
-        Slightly inset from top, bottom, and right side with rounded corners to make it float perfectly!
-      */}
       <motion.div
         className="hero-video-panel"
         initial={{ opacity: 0 }}
@@ -20,7 +41,7 @@ const Hero = () => {
         <div style={{
           width: '100%', height: '100%',
           background: '#ffffff',
-          borderRadius: '30px', /* Beautiful rounded floating edges! */
+          borderRadius: '30px',
           maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
           maskComposite: 'intersect',
@@ -41,11 +62,9 @@ const Hero = () => {
             }}
           />
         </div>
-        {/* Soft glowing shadow around the new floating canvas edge */}
         <div style={{ position: 'absolute', top: '0%', left: '10%', right: '0%', bottom: '0%', borderRadius: '30px', boxShadow: '0 10px 50px rgba(6, 182, 212, 0.15)', zIndex: -1 }} />
       </motion.div>
 
-      {/* Subtle bottom fade transition for the whole section so the white beautifully merges into the About section below */}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '150px', background: 'linear-gradient(to top, var(--bg-color), transparent)', zIndex: 1, pointerEvents: 'none' }} />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -59,7 +78,8 @@ const Hero = () => {
             style={{ flex: '1 1 500px', maxWidth: '600px' }}
           >
             <h1 style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-              Hi, I'm <br /><span className="gradient-text">Shantanu Kumar</span>.
+              Hi, I'm <br />
+              <span className="gradient-text">{displayedText}</span>
             </h1>
             <p style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', marginBottom: '2.5rem', maxWidth: '550px', lineHeight: 1.6 }}>
               A dedicated computational biologist with expertise in structural bioinformatics, molecular dynamics simulations, and machine learning. Passionate about applying computational tools to solve biological problems in drug discovery.

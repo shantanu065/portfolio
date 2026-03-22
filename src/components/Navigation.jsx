@@ -1,16 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'dark';
+    }
+    return 'dark';
+  });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const navLinks = [
     { name: 'About', href: '#about' },
@@ -30,36 +45,65 @@ const Navigation = () => {
             <span className="nav-subtitle" style={{ fontSize: '1rem', color: 'var(--text-secondary)', fontWeight: 400, letterSpacing: '0.5px', marginLeft: '0.2rem' }}>(Computational Biologist)</span>
           </a>
         
-        {/* Desktop Menu */}
-        <div style={{ display: 'flex', gap: '2rem' }} className="nav-links">
-          {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="hover-underline" style={{ fontWeight: 500, color: 'var(--text-primary)', transition: 'color 0.2s', fontSize: '0.95rem' }}
-               onMouseEnter={(e) => e.target.style.color = 'var(--accent-cyan)'}
-               onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
-              {link.name}
-            </a>
-          ))}
-        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          {/* Desktop Menu */}
+          <div style={{ display: 'flex', gap: '2rem' }} className="nav-links">
+            {navLinks.map((link) => (
+              <a key={link.name} href={link.href} className="hover-underline" style={{ fontWeight: 500, color: 'var(--text-primary)', transition: 'color 0.2s', fontSize: '0.95rem' }}
+                 onMouseEnter={(e) => e.target.style.color = 'var(--accent-cyan)'}
+                 onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}>
+                {link.name}
+              </a>
+            ))}
+          </div>
 
-        {/* Hamburger Button - hidden on desktop via CSS */}
-        <button
-          className="nav-hamburger"
-          onClick={() => setIsOpen(!isOpen)}
-          style={{
-            display: 'none',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'none',
-            border: 'none',
-            color: 'var(--text-primary)',
-            cursor: 'pointer',
-            padding: '0.5rem',
-            zIndex: 1001
-          }}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            style={{
+              background: 'none',
+              border: '1px solid var(--card-border)',
+              borderRadius: '8px',
+              padding: '0.4rem',
+              color: 'var(--text-primary)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s'
+            }}
+            aria-label="Toggle theme"
+          >
+            <motion.div
+              key={theme}
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </motion.div>
+          </button>
+
+          {/* Hamburger Button - hidden on desktop via CSS */}
+          <button
+            className="nav-hamburger"
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              display: 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-primary)',
+              cursor: 'pointer',
+              padding: '0.5rem',
+              zIndex: 1001
+            }}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Dropdown */}

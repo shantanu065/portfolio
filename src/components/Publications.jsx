@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, FileWarning } from 'lucide-react';
 
 const Publications = () => {
   const pubs = [
@@ -29,6 +29,31 @@ const Publications = () => {
       <div className="container">
         <h2 className="section-title">Publications</h2>
         
+        {/* Coming soon notice */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.8rem',
+            padding: '1rem 1.5rem',
+            background: 'rgba(6, 182, 212, 0.08)',
+            border: '1px solid rgba(6, 182, 212, 0.2)',
+            borderRadius: '12px',
+            marginBottom: '2rem',
+            maxWidth: '800px',
+            margin: '0 auto 2rem auto'
+          }}
+        >
+          <FileWarning size={20} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>
+            <strong style={{ color: 'var(--accent-cyan)' }}>Note:</strong> This section will be updated with real publications soon. The entries below are placeholders.
+          </p>
+        </motion.div>
+
         <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {pubs.map((pub, index) => (
             <motion.div 
@@ -38,7 +63,7 @@ const Publications = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass-panel pub-card"
-              style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', padding: '1.5rem' }}
+              style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', padding: '1.5rem', opacity: 0.6 }}
             >
               <div style={{ padding: '1rem', background: 'rgba(139, 92, 246, 0.1)', borderRadius: '12px', color: 'var(--accent-purple)', flexShrink: 0 }}>
                 <BookOpen size={24} />

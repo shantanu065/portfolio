@@ -7,32 +7,38 @@ const About = () => {
     { 
       category: 'Molecular Dynamics', 
       tools: ['AMBER (22/24)', 'GROMACS', 'Desmond', 'MM-PBSA', 'MM-GBSA', 'RMSD', 'RMSF', 'Rg', 'SASA'],
-      icon: <Activity size={24} color="var(--accent-cyan)" />
+      icon: <Activity size={24} color="var(--accent-cyan)" />,
+      proficiency: 90
     },
     { 
       category: 'Structural Bioinformatics', 
       tools: ['AutoDock', 'AutoDock Vina', 'HADDOCK', 'MODELLER', 'AlphaFold-Multimer', 'ColabFold', 'SiteMap', 'CHARMM-GUI'],
-      icon: <Dna size={24} color="var(--accent-purple)" />
+      icon: <Dna size={24} color="var(--accent-purple)" />,
+      proficiency: 85
     },
     { 
       category: 'AI & Antibody Engineering', 
       tools: ['RFdiffusion', 'ProteinMPNN', 'RFAntibody', 'BioPhi'],
-      icon: <Layers size={24} color="var(--accent-cyan)" />
+      icon: <Layers size={24} color="var(--accent-cyan)" />,
+      proficiency: 80
     },
     { 
       category: 'Analysis & Visualization', 
       tools: ['CPPTRAJ', 'VMD', 'MDAnalysis', 'PyMOL', 'Chimera'],
-      icon: <Database size={24} color="var(--accent-blue)" />
+      icon: <Database size={24} color="var(--accent-blue)" />,
+      proficiency: 88
     },
     { 
       category: 'Cheminformatics', 
       tools: ['Open Babel', 'RDKit', 'SwissADME'],
-      icon: <Beaker size={24} color="var(--accent-purple)" />
+      icon: <Beaker size={24} color="var(--accent-purple)" />,
+      proficiency: 75
     },
     { 
       category: 'Programming', 
       tools: ['Python', 'Bash', 'basic R', 'Linux', 'GPU/HPC environments'],
-      icon: <Code size={24} color="var(--accent-blue)" />
+      icon: <Code size={24} color="var(--accent-blue)" />,
+      proficiency: 82
     },
   ];
 
@@ -74,12 +80,40 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                     <div style={{ padding: '0.8rem', background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}>
                       {skill.icon}
                     </div>
                     <h4 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-primary)' }}>{skill.category}</h4>
                   </div>
+
+                  {/* Progress Bar */}
+                  <div style={{ marginBottom: '1rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Proficiency</span>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>{skill.proficiency}%</span>
+                    </div>
+                    <div style={{ 
+                      width: '100%', 
+                      height: '4px', 
+                      background: 'rgba(255,255,255,0.08)', 
+                      borderRadius: '2px', 
+                      overflow: 'hidden' 
+                    }}>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.proficiency}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
+                        style={{
+                          height: '100%',
+                          background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-purple))',
+                          borderRadius: '2px'
+                        }}
+                      />
+                    </div>
+                  </div>
+
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 'auto' }}>
                     {skill.tools.map(tool => (
                       <span key={tool} style={{ fontSize: '0.85rem', padding: '0.4rem 0.9rem', background: 'rgba(255,255,255,0.05)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-secondary)' }}>

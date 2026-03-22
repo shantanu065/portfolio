@@ -6,10 +6,12 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Navigation from './components/Navigation';
 import BackgroundAnimation from './components/BackgroundAnimation';
+import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   return (
     <div className="app-container">
+      <ScrollProgress />
       <BackgroundAnimation />
       <Navigation />
       <main>
