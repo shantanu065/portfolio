@@ -43,8 +43,8 @@ const Hero = () => {
           width: '100%', height: '100%',
           background: 'transparent',
           borderRadius: '30px',
-          maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
+          maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)',
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in',
           display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'
@@ -56,9 +56,9 @@ const Hero = () => {
             playsInline
             src={heroVideo}
             style={{
-              width: '120%',
-              height: '110%',
-              objectFit: 'cover',
+              width: '100%',
+              height: '100%',
+              objectFit: 'contain',
               position: 'absolute',
               top: '50%',
               left: '50%',
