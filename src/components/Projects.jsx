@@ -13,7 +13,7 @@ const Projects = () => {
     },
     {
       title: 'Dynamic Structural Insights of RORγt',
-      description: 'Master\'s Thesis: Investigated ligand binding mechanisms of RORγt. Performed molecular docking, Prime MM-GBSA calculations, and all-atom molecular dynamics using AMBER22 to decipher critical determinants.',
+      description: 'Master\'s Thesis focusing on the structural dynamics and ligand binding mechanisms of the RORγt nuclear receptor. The study utilized high-throughput molecular docking, Prime MM-GBSA free energy analysis, and extensive all-atom molecular dynamics tracking via AMBER22. The findings deciphered critical structural determinants and conformational changes crucial for developing targeted inhibitors against autoimmune diseases in drug discovery.',
       tags: ['AMBER22', 'MD Simulations', 'MM-GBSA', 'Docking'],
       color: 'var(--accent-purple)',
       image: import.meta.env.BASE_URL + 'roryt.png',
