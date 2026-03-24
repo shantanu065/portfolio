@@ -49,16 +49,20 @@ const Hero = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'
         }}>
           <video
-            src="/cd20-19_hmz.mp4"
             autoPlay
             loop
             muted
             playsInline
+            src={`${import.meta.env.BASE_URL}cd20-19_hmz.mp4`}
             style={{
-              width: '110%',
-              maxWidth: '1200px',
-              display: 'block',
-              pointerEvents: 'none'
+              width: '120%',
+              height: '110%',
+              objectFit: 'cover',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              mixBlendMode: 'screen'
             }}
           />
         </div>
@@ -85,8 +89,8 @@ const Hero = () => {
               A dedicated computational biologist with expertise in structural bioinformatics, molecular dynamics simulations, and machine learning. Passionate about applying computational tools to solve biological problems in drug discovery.
             </p>
             <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', marginTop: '1rem' }}>
-              <a href="/Shantanu_cv.pdf" target="_blank" rel="noopener noreferrer" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.1rem' }}>
-                Download CV
+              <a href={`${import.meta.env.BASE_URL}Shantanu_cv.pdf`} target="_blank" rel="noopener noreferrer" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.1rem' }}>
+                View Resume
               </a>
               <a href="#projects" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.1rem' }}>
                 View Projects<ArrowRight size={18} style={{ verticalAlign: 'middle', marginLeft: '0.3rem' }} />
