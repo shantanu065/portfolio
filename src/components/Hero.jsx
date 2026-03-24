@@ -41,12 +41,9 @@ const Hero = () => {
       >
         <div style={{
           width: '100%', height: '100%',
-          background: 'transparent',
+          background: '#ffffff',
           borderRadius: '30px',
-          maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)',
-          maskComposite: 'intersect',
-          WebkitMaskComposite: 'source-in',
+          boxShadow: '0 10px 50px rgba(6, 182, 212, 0.15)',
           display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'
         }}>
           <video
@@ -58,16 +55,10 @@ const Hero = () => {
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'contain',
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              mixBlendMode: 'screen'
+              objectFit: 'contain'
             }}
           />
         </div>
-        <div style={{ position: 'absolute', top: '0%', left: '10%', right: '0%', bottom: '0%', borderRadius: '30px', boxShadow: '0 10px 50px rgba(6, 182, 212, 0.15)', zIndex: -1 }} />
       </motion.div>
 
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '150px', background: 'linear-gradient(to top, var(--bg-color), transparent)', zIndex: 1, pointerEvents: 'none' }} />
