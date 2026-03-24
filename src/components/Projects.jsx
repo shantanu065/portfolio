@@ -6,7 +6,7 @@ const Projects = () => {
   const projects = [
     {
       title: 'CelAbGen: AI-Driven Antibody Design',
-      description: 'An end-to-end framework for de novo antibody design utilizing diffusion-based generative models. It assigns sequences via graph neural networks optimized for affinity and developability, and refines them using antibody-specific language models. By integrating early-stage off-target screening and AlphaFold validation, CelAbGen compresses discovery timelines from years to weeks.',
+      description: 'An end-to-end framework for de novo antibody design utilizing diffusion-based generative models. It optimizes sequences using graph neural networks and refines them with antibody-specific language models. By integrating early-stage off-target screening and AlphaFold validation, CelAbGen compresses discovery timelines from years to weeks.',
       tags: ['Generative AI', 'Diffusion Models', 'Graph Neural Networks', 'Deep Learning'],
       color: 'var(--accent-cyan)',
       image: import.meta.env.BASE_URL + 'celabgen.png'
