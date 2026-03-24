@@ -9,14 +9,14 @@ const Projects = () => {
       description: 'Core contributor to an in-house pipeline for AI-driven antibody design. Modeled antibody structures using AlphaFold3, and generated de novo protein binders using RFdiffusion and ProteinMPNN.',
       tags: ['AlphaFold3', 'RFdiffusion', 'ProteinMPNN', 'Deep Learning'],
       color: 'var(--accent-cyan)',
-      image: '/Screenshot 2025-05-09 231107.png'
+      image: '/celabgen.png'
     },
     {
       title: 'Dynamic Structural Insights of RORγt',
       description: 'Master\'s Thesis: Investigated ligand binding mechanisms of RORγt. Performed molecular docking, Prime MM-GBSA calculations, and all-atom molecular dynamics using AMBER22 to decipher critical determinants.',
       tags: ['AMBER22', 'MD Simulations', 'MM-GBSA', 'Docking'],
       color: 'var(--accent-purple)',
-      image: '/Screenshot 2025-05-09 224915.png',
+      image: '/roryt.png',
       links: [
         { label: 'Read Thesis', href: '/shantanu_thesis.pdf' }
       ]
@@ -26,14 +26,14 @@ const Projects = () => {
       description: 'An AI-driven computational pipeline designed to accurately predict and evaluate the immunogenic potential of therapeutic and antibody candidates.',
       tags: ['Machine Learning', 'Immunoinformatics', 'Python'],
       color: 'var(--accent-blue)',
-      image: '/Screenshot 2025-05-09 225019.png'
+      image: '/cimmexa.png'
     },
     {
       title: 'In-silico Inhibition of Adhesion Protein P110',
       description: 'Modeled the 3D structure of the P110 adhesion protein, screened phytochemical compounds, performed molecular docking and evaluated pharmacokinetic properties.',
       tags: ['Protein Modeling', 'Molecular Docking', 'SwissADME'],
       color: 'var(--accent-cyan)',
-      image: '/Screenshot 2025-05-07 175823.png',
+      image: '/p110.png',
       links: []
     },
     {
@@ -41,7 +41,7 @@ const Projects = () => {
       description: 'Performed protein-peptide docking studies, molecular dynamics simulations using Desmond, and MM-PBSA per-residue energy decomposition against Aminoglycoside-Modifying Enzymes.',
       tags: ['MD Simulations', 'Desmond', 'MM-PBSA'],
       color: 'var(--accent-purple)',
-      image: '/Screenshot 2025-05-08 171630.png',
+      image: '/ltx.png',
       links: []
     },
     {
@@ -107,8 +107,8 @@ const Projects = () => {
         <div style={{ position: 'absolute', top: 0, right: 0, width: '150px', height: '150px', background: project.color, filter: 'blur(80px)', opacity: 0.2, zIndex: -1 }} />
         
         {project.image && (
-          <div style={{ width: '100%', height: '180px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <img src={project.image} alt={project.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <div style={{ width: '100%', height: '180px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', background: '#ffffff', padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={project.image} alt={project.title} loading="lazy" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
           </div>
         )}
         
