@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Dna, ArrowRight } from 'lucide-react';
+import heroVideo from '../assets/cd20-19_hmz.mp4';
 
 const Hero = () => {
   const name = "Shantanu Kumar";
@@ -53,7 +54,7 @@ const Hero = () => {
             loop
             muted
             playsInline
-            src={`${import.meta.env.BASE_URL}cd20-19_hmz.mp4`}
+            src={heroVideo}
             style={{
               width: '120%',
               height: '110%',
