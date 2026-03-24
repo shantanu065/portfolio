@@ -156,7 +156,7 @@ const Projects = () => {
       <div className="container">
         <h2 className="section-title">Research Projects</h2>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}
