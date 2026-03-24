@@ -23,7 +23,7 @@ const Projects = () => {
     },
     {
       title: 'Cimmexa: AI-Driven Immunogenicity Prediction',
-      description: 'An AI-driven computational pipeline designed to accurately predict and evaluate the immunogenic potential of therapeutic and antibody candidates.',
+      description: 'Cimmexa is an advanced immunogenicity prediction and deimmunization platform utilized for therapeutic antibody candidates. Powered by an ensemble of three distinct machine learning algorithms, the pipeline accurately evaluates immunogenic risk profiles and intelligently redesigns sequences to minimize clinical anti-drug antibody responses.',
       tags: ['Machine Learning', 'Immunoinformatics', 'Python'],
       color: 'var(--accent-blue)',
       image: import.meta.env.BASE_URL + 'cimmexa.png'
