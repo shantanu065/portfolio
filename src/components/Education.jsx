@@ -6,11 +6,11 @@ const Education = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start 60%", "end 60%"]
   });
 
-  // Timeline line scale tied to scroll
-  const lineScale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  // Timeline line scale tied exactly to scroll
+  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const journey = [
     {
@@ -45,17 +45,34 @@ const Education = () => {
 
   // Create scroll-linked transforms for each card
   const CardItem = ({ item, index }) => {
-    const cardStart = 0.1 + index * 0.12;
-    const cardMid = cardStart + 0.1;
-    const cardFadeOut = 0.75 + index * 0.05;
-    
-    const opacity = useTransform(scrollYProgress, 
-      [cardStart, cardMid, cardFadeOut, Math.min(cardFadeOut + 0.1, 1)], 
-      [0, 1, 1, 0]
+    // Dynamic progress values based on index
+    const totalCards = 4;
+    const step = 1 / totalCards;
+    const startProgress = index * step;
+    const endProgress = startProgress + step;
+
+    // The dot fills up when the line reaches this card
+    const dotBorderColor = useTransform(
+      scrollYProgress,
+      [startProgress, endProgress],
+      ['rgba(255, 255, 255, 0.2)', '#06b6d4'] // hex for --accent-cyan
     );
-    const x = useTransform(scrollYProgress, 
-      [cardStart, cardMid, cardFadeOut, Math.min(cardFadeOut + 0.1, 1)], 
-      [30, 0, 0, 30]
+    const dotBoxShadow = useTransform(
+      scrollYProgress,
+      [startProgress, endProgress],
+      ['0 0 0px rgba(6, 182, 212, 0)', '0 0 10px rgba(6, 182, 212, 0.8)']
+    );
+
+    // Fade and slide the card in
+    const opacity = useTransform(
+      scrollYProgress, 
+      [Math.max(0, startProgress - 0.1), startProgress + 0.1], 
+      [0.3, 1]
+    );
+    const x = useTransform(
+      scrollYProgress, 
+      [Math.max(0, startProgress - 0.1), startProgress + 0.1], 
+      [30, 0]
     );
 
     return (
@@ -64,7 +81,24 @@ const Education = () => {
         className="glass-panel education-card"
       >
         {/* Timeline dot */}
-        <div className="timeline-dot" style={{ position: 'absolute', left: '-51px', top: '24px', width: '20px', height: '20px', borderRadius: '50%', background: 'var(--bg-color)', border: '4px solid var(--accent-cyan)', zIndex: 2, boxShadow: '0 0 10px var(--accent-cyan)' }} />
+        <motion.div 
+          className="timeline-dot" 
+          style={{ 
+            position: 'absolute', 
+            left: '-51px', 
+            top: '24px', 
+            width: '20px', 
+            height: '20px', 
+            borderRadius: '50%', 
+            background: 'var(--bg-color)', 
+            borderWidth: '4px',
+            borderStyle: 'solid',
+            borderColor: dotBorderColor, 
+            zIndex: 2, 
+            boxShadow: dotBoxShadow,
+            transition: 'border-color 0.1s, box-shadow 0.1s'
+          }} 
+        />
         
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '0.5rem', color: 'var(--accent-cyan)' }}>
           {item.icon}

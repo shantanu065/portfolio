@@ -41,7 +41,7 @@ const Navigation = () => {
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '64px' }}>
           <a href="#" style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', display: 'flex', alignItems: 'baseline', gap: '0.5rem', textDecoration: 'none' }}>
-            <span className="gradient-text">Shantanu.</span>
+            <span className="gradient-text">Shantanu</span>
             <span className="nav-subtitle" style={{ fontSize: '1rem', color: 'var(--text-secondary)', fontWeight: 400, letterSpacing: '0.5px', marginLeft: '0.2rem' }}>(Computational Biologist)</span>
           </a>
         
