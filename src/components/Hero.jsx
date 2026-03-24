@@ -41,7 +41,7 @@ const Hero = () => {
       >
         <div style={{
           width: '100%', height: '100%',
-          background: '#ffffff',
+          background: 'transparent',
           borderRadius: '30px',
           maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
           WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)',
