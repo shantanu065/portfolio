@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Education from './components/Education';
+import MolecularShowcase from './components/MolecularShowcase';
 import Contact from './components/Contact';
 import Navigation from './components/Navigation';
 import BackgroundAnimation from './components/BackgroundAnimation';
@@ -16,6 +17,7 @@ function App() {
       <Navigation />
       <main>
         <Hero />
+        <MolecularShowcase />
         <About />
         <Projects />
         <Education />

@@ -32,6 +32,7 @@ const Hero = () => {
   return (
     <section id="hero" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '120px', paddingBottom: '40px', position: 'relative', overflow: 'hidden' }}>
 
+      {/* Desktop video: absolute positioned on right (hidden on mobile via CSS) */}
       <motion.div
         className="hero-video-panel"
         initial={{ opacity: 0 }}
