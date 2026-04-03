@@ -68,3 +68,93 @@ If you don't see your changes immediately on your live site:
 2. Do a **Hard Refresh** on your browser to clear old data cache:
    - Windows/Linux: `Ctrl + Shift + R`
    - Mac: `Cmd + Shift + R`
+
+---
+
+## 4️⃣ How to Undo a Previous Push and Force Update (Linux Commands)
+
+If you made a mistake on your last commit/push and want to "delete" that old push to replace it with a new one entirely, use these Linux terminal commands:
+
+1. **Undo the last commit** (this moves the files back to your working directory without losing any typed data):
+   ```bash
+   git reset --soft HEAD~1
+   ```
+   *(If you want to completely discard your changes and go exactly back to the previous version, use `git reset --hard HEAD~1` instead)*
+
+2. **Make your new changes** and save your files.
+
+3. **Add and commit the new corrected update**:
+   ```bash
+   git add .
+   git commit -m "Your new corrected update message"
+   ```
+
+4. **Force push to GitHub** (this overrides and deletes the old push from GitHub, replacing it with the new one):
+   ```bash
+   git push origin main --force
+   ```
+
+5. **Redeploy the live site**:
+   ```bash
+   npm run deploy
+   ```
+
+---
+
+## 5️⃣ How to Delete a File/Folder Already Pushed to GitHub
+
+If you accidentally pushed a file or folder (like `public/`) to GitHub and want to remove it from GitHub **but keep it on your computer**, follow these Linux/Terminal steps:
+
+1. **Remove a File from Git tracking**:
+   ```bash
+   git rm --cached filename.ext
+   ```
+   *(Replace `filename.ext` with your actual file name)*
+
+2. **Remove an entire Folder from Git tracking**:
+   ```bash
+   git rm -r --cached foldername/
+   ```
+
+3. **Ignore the file** so it never gets pushed again:
+   Open your `.gitignore` file and type the name of the file/folder on a new line.
+
+4. **Commit and Push the deletion**:
+   ```bash
+   git add .
+   git commit -m "Removed file/folder from git tracking"
+   git push origin main
+   ```
+
+---
+
+## 🚀 One-Click Automated Deployment (Linux / macOS)
+
+If you are using Linux instead of Windows, here are the pure Linux bash commands to automatically deploy your project in one go using a script.
+
+1. **Create a file** named `deploy.sh` in your project folder.
+2. **Add this exact code** inside it:
+   ```bash
+   #!/bin/bash
+   echo "Adding changes to git..."
+   git add .
+
+   echo "Committing changes..."
+   git commit -m "Automated update via linux script"
+
+   echo "Pushing to GitHub main branch..."
+   git push origin main
+
+   echo "Deploying to live website..."
+   npm run deploy
+
+   echo "Deployment complete! Check your live site in a few minutes."
+   ```
+3. **Make the script executable** (run this once in your Linux terminal):
+   ```bash
+   chmod +x deploy.sh
+   ```
+4. **Run it** every time you want to push & deploy updates:
+   ```bash
+   ./deploy.sh
+   ```

@@ -83,7 +83,7 @@ const Hero = () => {
               A dedicated computational biologist with expertise in structural bioinformatics, molecular dynamics simulations, and machine learning. Passionate about applying computational tools to solve biological problems in drug discovery.
             </p>
             <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', marginTop: '1rem' }}>
-              <a href={`${import.meta.env.BASE_URL}Shantanu_cv.pdf`} target="_blank" rel="noopener noreferrer" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.1rem' }}>
+              <a href={`${import.meta.env.BASE_URL}shantanu_cv.pdf`} target="_blank" rel="noopener noreferrer" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.1rem' }}>
                 View Resume
               </a>
               <a href="#projects" className="hover-underline" style={{ color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '1.1rem' }}>
