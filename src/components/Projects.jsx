@@ -53,10 +53,12 @@ const Projects = () => {
     },
     {
       title: 'LigandDock Pro',
-      description: 'A web-based visualization tool for identifying potential binding pockets and simulating protein-ligand interactions.',
-      tags: ['React', 'Three.js', 'WebGL', 'Node.js'],
+      description: 'A deep-learning powered computational biology platform. Features an interactive 3D web viewer and a 3D Graph Neural Network engine for predicting protein-ligand binding pockets and docking poses.',
+      tags: ['React', 'Python', 'PyTorch', 'Geometric Deep Learning'],
       color: 'var(--accent-cyan)',
-      comingSoon: true
+      links: [
+        { label: 'GitHub', href: '#' }
+      ]
     },
     {
       title: 'MD Trajectory Toolkit',
