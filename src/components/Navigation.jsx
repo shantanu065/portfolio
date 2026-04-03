@@ -116,7 +116,7 @@ const Navigation = () => {
             transition={{ duration: 0.3 }}
             style={{
               overflow: 'hidden',
-              background: 'rgba(11, 15, 25, 0.95)',
+              background: 'color-mix(in srgb, var(--bg-color) 95%, transparent)',
               borderTop: '1px solid var(--card-border)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)'
@@ -127,7 +127,17 @@ const Navigation = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    const targetId = link.href.replace('#', '');
+                    setTimeout(() => {
+                      const el = document.getElementById(targetId);
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 300);
+                  }}
                   style={{
                     fontWeight: 500,
                     color: 'var(--text-primary)',
