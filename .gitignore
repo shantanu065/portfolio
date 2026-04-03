@@ -25,4 +25,4 @@ dist-ssr
 
 .vercel
 BUILD_AND_DEPLOY_GUIDE.md
-public/
+DEPLOYMENT_GUIDE.md
