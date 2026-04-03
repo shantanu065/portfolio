@@ -16,7 +16,7 @@ const Contact = () => {
           style={{ maxWidth: '600px', margin: '0 auto' }}
         >
           <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', marginBottom: '3rem' }}>
-            I am always open to discussing new projects, creative ideas, in structural bioinformatics and computational biology. Feel free to reach out!
+            I am always open to discussing new projects, creative ideas in structural bioinformatics and computational biology. Feel free to reach out!
           </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', marginBottom: '4rem' }}>
