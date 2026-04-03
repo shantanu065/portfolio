@@ -38,7 +38,7 @@ const Education = () => {
       role: "B.Sc. in Biotechnology",
       institution: "Gaya College, Gaya",
       year: "2022",
-      description: "Percentage: 71.87%. Foundational knowledge in biological sciences and technology applications. Filed patent for CelAbGen AI-driven antibody design pipeline.",
+      description: "Percentage: 71.87%. Foundational knowledge in biological sciences and technology applications.",
       icon: <GraduationCap size={20} />
     }
   ];
@@ -65,13 +65,13 @@ const Education = () => {
 
     // Fade and slide the card in
     const opacity = useTransform(
-      scrollYProgress, 
-      [Math.max(0, startProgress - 0.1), startProgress + 0.1], 
+      scrollYProgress,
+      [Math.max(0, startProgress - 0.1), startProgress + 0.1],
       [0.3, 1]
     );
     const x = useTransform(
-      scrollYProgress, 
-      [Math.max(0, startProgress - 0.1), startProgress + 0.1], 
+      scrollYProgress,
+      [Math.max(0, startProgress - 0.1), startProgress + 0.1],
       [30, 0]
     );
 
@@ -81,35 +81,35 @@ const Education = () => {
         className="glass-panel education-card"
       >
         {/* Timeline dot */}
-        <motion.div 
-          className="timeline-dot" 
-          style={{ 
-            position: 'absolute', 
-            left: '-51px', 
-            top: '24px', 
-            width: '20px', 
-            height: '20px', 
-            borderRadius: '50%', 
-            background: 'var(--bg-color)', 
+        <motion.div
+          className="timeline-dot"
+          style={{
+            position: 'absolute',
+            left: '-51px',
+            top: '24px',
+            width: '20px',
+            height: '20px',
+            borderRadius: '50%',
+            background: 'var(--bg-color)',
             borderWidth: '4px',
             borderStyle: 'solid',
-            borderColor: dotBorderColor, 
-            zIndex: 2, 
+            borderColor: dotBorderColor,
+            zIndex: 2,
             boxShadow: dotBoxShadow,
             transition: 'border-color 0.1s, box-shadow 0.1s'
-          }} 
+          }}
         />
-        
+
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '0.5rem', color: 'var(--accent-cyan)' }}>
           {item.icon}
           <h3 style={{ fontSize: '1.3rem', margin: 0, color: 'var(--text-primary)' }}>{item.role}</h3>
         </div>
-        
+
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
           <span style={{ fontWeight: 500, color: 'var(--accent-purple)' }}>{item.institution}</span>
           <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{item.year}</span>
         </div>
-        
+
         <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{item.description}</p>
       </motion.div>
     );
@@ -119,14 +119,14 @@ const Education = () => {
     <section id="education" ref={sectionRef}>
       <div className="container">
         <h2 className="section-title">Experience & Education</h2>
-        
+
         <div className="education-timeline" style={{ position: 'relative', maxWidth: '800px', margin: '0 auto', paddingLeft: '30px' }}>
           {/* Timeline Line */}
           <div style={{ position: 'absolute', left: '0', top: '0', bottom: '0', width: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '2px' }}>
-            <motion.div 
-              style={{ 
+            <motion.div
+              style={{
                 height: '100%',
-                width: '100%', 
+                width: '100%',
                 background: 'linear-gradient(180deg, var(--accent-cyan), var(--accent-purple))',
                 scaleY: lineScale,
                 transformOrigin: 'top'
