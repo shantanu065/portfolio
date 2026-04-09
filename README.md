@@ -61,5 +61,3 @@ The output files will be in the `dist` folder, which can be deployed to platform
 - `src/index.css`: Global styles, CSS variables, and glassmorphism definitions.
 - `public/`: Assets like CV PDF, thesis, and protein simulation videos.
 
----
-Created with ❤️ by Antigravity.
