@@ -43,29 +43,6 @@ const Projects = () => {
       color: 'var(--accent-purple)',
       image: import.meta.env.BASE_URL + 'ltx.png',
       links: []
-    },
-    {
-      title: 'AlphaFold Pipeline Automation',
-      description: 'An automated high-throughput pipeline for predicting protein structures across entire viral genomes using AlphaFold2.',
-      tags: ['Python', 'Docker', 'SLURM', 'Bash'],
-      color: 'var(--accent-blue)',
-      comingSoon: true
-    },
-    {
-      title: 'LigandDock Pro',
-      description: 'A deep-learning powered computational biology platform. Features an interactive 3D web viewer and a 3D Graph Neural Network engine for predicting protein-ligand binding pockets and docking poses.',
-      tags: ['React', 'Python', 'PyTorch', 'Geometric Deep Learning'],
-      color: 'var(--accent-cyan)',
-      links: [
-        { label: 'GitHub', href: '#' }
-      ]
-    },
-    {
-      title: 'MD Trajectory Toolkit',
-      description: 'Open-source toolkit for rapid analysis of molecular dynamics trajectories, featuring PCA and structural clustering.',
-      tags: ['Python', 'MDAnalysis', 'NumPy'],
-      color: 'var(--accent-purple)',
-      comingSoon: true
     }
   ];
 
